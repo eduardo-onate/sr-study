@@ -39,7 +39,7 @@ def shuffle_embeddings(embeddings_by_label: dict, label: str, num_shuffles: int 
 
     return shuffled_embeddings
 
-def centroid_evolution(embeddings: np.ndarray, labels: np.ndarray, label: str):
+def centroid_evolution_by_label(embeddings: np.ndarray, labels: np.ndarray, label: str):
     """
     Characterizes the centroid drift for a given label.
     The centroid drift is calculated as the cosine similarity between the centroid of the first n embeddings

@@ -82,7 +82,7 @@ class Preprocessor:
     
     
     @staticmethod
-    def segment(chop_dir: str, duration: int) -> str:
+    def segment(chop_dir: str, duration: int, max_samples_per_speaker: int = 1100) -> str:
         """
         Segments the audios in a directory into subsegments. The maximum duration of all segments
         is given by `duration`.
@@ -107,6 +107,7 @@ class Preprocessor:
         duration *= 1000  # Convert to milliseconds
         
         for speaker in speakers:
+            sample_count = 0
             speaker_dir = os.path.join(chop_dir, speaker)
             speaker_files = glob.glob(f"{speaker_dir}/*.wav")
             new_speaker_dir = os.path.join(segments_dir, speaker)
@@ -122,13 +123,11 @@ class Preprocessor:
                         segment = audio[i*duration : (i+1)*duration]
                         path = f"{os.path.join(new_speaker_dir, file_basename)}_{i}.wav"
                         segment.export(path, format='wav')
-                    # if D % duration > 1000:  # If the remaining segment is longer than 1 s
-                    #     segment = audio[slices*duration:]
-                    #     path = f"{os.path.join(new_speaker_dir, file_basename)}_{slices}.wav"
-                    #     segment.export(path, format='wav')
-                    
-                # else:  # If the audio is shorter than duration it is copied as is
-                #     shutil.copy(file, new_speaker_dir)
+                        sample_count += 1
+                        if sample_count >= max_samples_per_speaker:
+                            break  # Break the inner for loop when the sample limit is reached
+                if sample_count >= max_samples_per_speaker:
+                    break  # Break the outer for loop for the current speaker
                     
         print(f"Segments of {int(duration/1000)} sec created at {segments_dir}")
         
