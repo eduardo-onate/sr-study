@@ -1,7 +1,7 @@
 # These are way to big to be uploaded to Github
-results/fixed_d30_unbalanced._similaritiespkl
-results/fixed_d30_unbalanced_Y_identification.pkl
-results/fixed_d30_unbalanced_Y_og_identification.pkl
-results/fixed_d30_unbalanced_Y_og_prediction.pkl
-results/fixed_d30_unbalanced_Y_prediction.pkl
-results/fixed_d30_unbalanced_similarities_og.pkl
+# results/fixed_d30_unbalanced_similarities.pkl
+# results/fixed_d30_unbalanced_Y_identification.pkl
+# results/fixed_d30_unbalanced_Y_og_identification.pkl
+# results/fixed_d30_unbalanced_Y_og_prediction.pkl
+# results/fixed_d30_unbalanced_Y_prediction.pkl
+# results/fixed_d30_unbalanced_similarities_og.pkl
