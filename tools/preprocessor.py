@@ -84,8 +84,7 @@ class Preprocessor:
     @staticmethod
     def segment(chop_dir: str, duration: int, max_samples_per_speaker: int = 1100) -> str:
         """
-        Segments the audios in a directory into subsegments. The maximum duration of all segments
-        is given by `duration`.
+        Segments the audios in a directory into subsegments of duration `duration`.
 
         Args:
             chop_dir: Directory containing the audios to segment.
